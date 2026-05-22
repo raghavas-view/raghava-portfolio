@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Raghava | Website Design & AI Voice Agents</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700&family=DM+Sans:wght@400;500&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'DM Sans', sans-serif; background:#fff; color:#111; }
+
+  nav { display:flex; justify-content:space-between; align-items:center; padding:16px 48px; border-bottom:2px solid #7F77DD; background:#fff; position:sticky; top:0; z-index:100; }
+  .nav-logo { font-family:'Syne',sans-serif; font-size:22px; font-weight:700; color:#534AB7; letter-spacing:1px; }
+  .nav-links { display:flex; gap:28px; }
+  .nav-links a { font-size:14px; color:#444; text-decoration:none; }
+  .nav-links a:hover { color:#534AB7; }
+  .nav-cta { background:#534AB7; color:#fff; border:none; padding:10px 22px; border-radius:8px; font-size:14px; cursor:pointer; font-family:'DM Sans',sans-serif; text-decoration:none; }
+
+  .hero { display:grid; grid-template-columns:1fr 1fr; min-height:420px; }
+  .hero-left { padding:64px 48px; display:flex; flex-direction:column; justify-content:center; gap:18px; }
+  .hero-tag { display:inline-block; background:#EEEDFE; color:#3C3489; font-size:12px; letter-spacing:2px; padding:6px 16px; border-radius:20px; width:fit-content; font-weight:500; }
+  .hero-name { font-family:'Syne',sans-serif; font-size:52px; font-weight:700; color:#111; line-height:1.1; }
+  .hero-name span { color:#534AB7; }
+  .hero-tagline { font-size:16px; color:#555; line-height:1.7; max-width:360px; }
+  .hero-tagline strong { color:#D85A30; }
+  .infosys-badge { display:inline-flex; align-items:center; gap:10px; background:#fff7e6; border:1.5px solid #f0c070; border-radius:10px; padding:10px 16px; width:fit-content; }
+  .infosys-badge span { font-size:13px; color:#854F0B; font-weight:500; }
+  .hero-btns { display:flex; gap:14px; margin-top:8px; flex-wrap:wrap; }
+  .btn-purple { background:#534AB7; color:#fff; border:none; padding:14px 28px; border-radius:8px; font-size:14px; cursor:pointer; font-family:'DM Sans',sans-serif; font-weight:500; text-decoration:none; display:inline-block; }
+  .btn-outline-p { background:#fff; color:#534AB7; border:2px solid #534AB7; padding:12px 28px; border-radius:8px; font-size:14px; cursor:pointer; font-family:'DM Sans',sans-serif; font-weight:500; text-decoration:none; display:inline-block; }
+  .hero-right { background:#EEEDFE; display:flex; align-items:center; justify-content:center; }
+  .profile-wrap { width:200px; height:200px; border-radius:50%; overflow:hidden; border:6px solid #AFA9EC; }
+  .profile-wrap img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+
+  .strip { background:#534AB7; display:grid; grid-template-columns:repeat(3,1fr); }
+  .strip-item { padding:22px; text-align:center; border-right:1px solid #6b63c9; }
+  .strip-item:last-child { border-right:none; }
+  .strip-num { font-family:'Syne',sans-serif; font-size:28px; font-weight:700; color:#fff; }
+  .strip-label { font-size:12px; color:#AFA9EC; letter-spacing:1px; margin-top:4px; }
+
+  section { padding:60px 48px; }
+  .sec-tag { font-size:12px; color:#D85A30; letter-spacing:3px; font-weight:500; text-transform:uppercase; }
+  .sec-title { font-family:'Syne',sans-serif; font-size:32px; font-weight:700; color:#111; margin-top:8px; }
+  .sec-line { width:44px; height:4px; background:#534AB7; margin-top:10px; border-radius:2px; }
+
+  .services-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; margin-top:36px; }
+  .svc-card { border:2px solid #EEEDFE; border-radius:16px; padding:28px; transition:border-color 0.2s; }
+  .svc-card:hover { border-color:#AFA9EC; }
+  .svc-icon { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+  .svc-icon svg { width:28px; height:28px; }
+  .svc-icon.purple { background:#EEEDFE; color:#534AB7; }
+  .svc-icon.coral { background:#FAECE7; color:#993C1D; }
+  .svc-name { font-family:'Syne',sans-serif; font-size:18px; font-weight:700; color:#111; margin-bottom:8px; }
+  .svc-desc { font-size:14px; color:#666; line-height:1.7; margin-bottom:16px; }
+  .svc-price { font-size:14px; color:#534AB7; font-weight:500; display:inline-block; background:#EEEDFE; padding:5px 14px; border-radius:20px; }
+
+  .about-section { background:#f9f9fc; }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; margin-top:36px; }
+  .about-text p { font-size:15px; color:#555; line-height:1.8; margin-bottom:16px; }
+  .about-badges { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+  .badge { padding:6px 16px; border-radius:20px; font-size:13px; font-weight:500; }
+  .badge.purple { background:#EEEDFE; color:#3C3489; }
+  .badge.coral { background:#FAECE7; color:#712B13; }
+  .about-card { background:#fff; border-radius:20px; padding:32px; border:2px solid #EEEDFE; display:flex; flex-direction:column; gap:20px; }
+  .about-card-item { display:flex; align-items:flex-start; gap:14px; }
+  .about-card-item svg { width:22px; height:22px; color:#534AB7; margin-top:2px; flex-shrink:0; }
+  .about-card-item strong { font-size:14px; color:#26215C; display:block; font-weight:500; }
+  .about-card-item span { font-size:13px; color:#534AB7; }
+
+  .yt-section { background:#FFF5F0; }
+  .yt-card { background:#fff; border-radius:18px; padding:32px; display:flex; align-items:center; gap:28px; border:2px solid #F5C4B3; max-width:620px; margin-top:32px; }
+  .yt-icon { width:72px; height:72px; border-radius:16px; background:#D85A30; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .yt-icon svg { width:36px; height:36px; color:#fff; }
+  .yt-info strong { font-family:'Syne',sans-serif; font-size:20px; color:#111; display:block; margin-bottom:6px; }
+  .yt-info span { font-size:14px; color:#666; display:block; margin-bottom:16px; line-height:1.6; }
+  .yt-btn { display:inline-flex; align-items:center; gap:8px; background:#D85A30; color:#fff; border:none; padding:12px 22px; border-radius:8px; font-size:14px; cursor:pointer; text-decoration:none; font-family:'DM Sans',sans-serif; font-weight:500; }
+
+  .contact-section { background:#534AB7; }
+  .contact-section .sec-tag { color:#AFA9EC; }
+  .contact-section .sec-title { color:#fff; }
+  .contact-section .sec-line { background:#D85A30; }
+  .contact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:36px; }
+  .contact-card { background:#EEEDFE; border-radius:14px; padding:22px; display:flex; align-items:center; gap:14px; }
+  .contact-card svg { width:26px; height:26px; color:#534AB7; flex-shrink:0; }
+  .contact-card strong { font-size:14px; color:#26215C; display:block; font-weight:500; }
+  .contact-card span { font-size:13px; color:#534AB7; }
+
+  footer { background:#26215C; padding:22px 48px; display:flex; justify-content:space-between; align-items:center; }
+  .footer-logo { font-family:'Syne',sans-serif; font-size:18px; color:#AFA9EC; font-weight:700; letter-spacing:1px; }
+  .footer-copy { font-size:13px; color:#534AB7; }
+
+  @media (max-width: 768px) {
+    nav { padding:14px 20px; }
+    .nav-links { display:none; }
+    .hero { grid-template-columns:1fr; }
+    .hero-left { padding:36px 20px; }
+    .hero-name { font-size:36px; }
+    .hero-right { padding:40px; }
+    .strip { grid-template-columns:1fr; }
+    .strip-item { border-right:none; border-bottom:1px solid #6b63c9; }
+    section { padding:40px 20px; }
+    .services-grid { grid-template-columns:1fr; }
+    .about-grid { grid-template-columns:1fr; }
+    .contact-grid { grid-template-columns:1fr; }
+    .yt-card { flex-direction:column; }
+    footer { flex-direction:column; gap:10px; text-align:center; padding:20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Raghava</div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#youtube">YouTube</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="https://wa.me/919361718976" target="_blank">Hire Me</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Digital Entrepreneur · Hosur, Tamil Nadu</div>
+    <div class="hero-name">Hi, I'm<br><span>Raghava</span></div>
+    <div class="hero-tagline">I help businesses <strong>grow online</strong> — with stunning websites and AI voice agents that work 24/7.</div>
+    <div class="infosys-badge">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#854F0B" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      <span>Technology Analyst at Infosys</span>
+    </div>
+    <div class="hero-btns">
+      <a class="btn-purple" href="https://wa.me/919361718976" target="_blank">Work with me</a>
+      <a class="btn-outline-p" href="https://www.youtube.com/@Raghavasview" target="_blank">Watch YouTube</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="profile-wrap">
+      <img src="data:image/jpeg;base64,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" alt="Raghava" />
+    </div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="strip-item"><div class="strip-num">100%</div><div class="strip-label">Client satisfaction</div></div>
+  <div class="strip-item"><div class="strip-num">Infosys</div><div class="strip-label">Tech professional</div></div>
+  <div class="strip-item"><div class="strip-num">2025</div><div class="strip-label">Started this journey</div></div>
+</div>
+
+<section id="services">
+  <div class="sec-tag">What I offer</div>
+  <div class="sec-title">Services for your business</div>
+  <div class="sec-line"></div>
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon purple">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      </div>
+      <div class="svc-name">Business website design</div>
+      <div class="svc-desc">Beautiful, fast and mobile-friendly websites for restaurants, salons, clinics, shops and any local business. Your business deserves to be online.</div>
+      <span class="svc-price">Starting ₹8,000</span>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon coral">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+      </div>
+      <div class="svc-name">AI voice agents</div>
+      <div class="svc-desc">Smart AI-powered voice bots that answer customer calls, take bookings and handle FAQs — 24/7, without needing a human receptionist.</div>
+      <span class="svc-price">Starting ₹15,000</span>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about-section">
+  <div class="sec-tag">About me</div>
+  <div class="sec-title">Who is Raghava?</div>
+  <div class="sec-line"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm Raghava — a Technology Analyst at Infosys and a digital entrepreneur from Hosur, Tamil Nadu. By day I work with enterprise-level tech, and on the side I'm on a mission to help local businesses go digital.</p>
+      <p>I build websites and AI voice agents that actually work for your business — whether you're a salon, a clinic, a restaurant or any local shop. My goal is simple: make technology affordable and accessible for every business owner in India.</p>
+      <div class="about-badges">
+        <span class="badge purple">Website design</span>
+        <span class="badge coral">AI voice agents</span>
+        <span class="badge purple">Technology Analyst</span>
+        <span class="badge coral">Content creator</span>
+      </div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <div><strong>Location</strong><span>Hosur, Tamil Nadu, India</span></div>
+      </div>
+      <div class="about-card-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <div><strong>Day job</strong><span>Technology Analyst at Infosys</span></div>
+      </div>
+      <div class="about-card-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <div><strong>Speciality</strong><span>Websites & AI voice agents for local businesses</span></div>
+      </div>
+      <div class="about-card-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <div><strong>Response time</strong><span>Within 24 hours guaranteed</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="youtube" class="yt-section">
+  <div class="sec-tag">On YouTube</div>
+  <div class="sec-title">Raghava's View</div>
+  <div class="sec-line" style="background:#D85A30;"></div>
+  <div class="yt-card">
+    <div class="yt-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+    </div>
+    <div class="yt-info">
+      <strong>Raghava's View</strong>
+      <span>I document my real life — my experiences, journey, moments and everything in between. Come along for the ride.</span>
+      <a href="https://www.youtube.com/@Raghavasview" target="_blank" class="yt-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:16px;height:16px;stroke-width:2;"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Visit channel
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="sec-tag">Get in touch</div>
+  <div class="sec-title">Let's work together</div>
+  <div class="sec-line"></div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.131.558 4.136 1.535 5.878L.057 23.5l5.765-1.513A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.017-1.378l-.36-.214-3.724.977.995-3.634-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+      <div><strong>WhatsApp</strong><span>+91 93617 18976</span></div>
+    </div>
+    <div class="contact-card">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      <div><strong>Location</strong><span>Hosur, Tamil Nadu</span></div>
+    </div>
+    <div class="contact-card">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      <div><strong>YouTube</strong><span>@Raghavasview</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Raghava</div>
+  <div class="footer-copy">© 2025 Raghava. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
